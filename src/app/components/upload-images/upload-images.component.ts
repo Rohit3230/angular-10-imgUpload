@@ -13,6 +13,15 @@ export class UploadImagesComponent implements OnInit {
   selectedFiles: FileList;
   progressInfos = [];
   message = '';
+  selected = 'aadhar';
+  responseObj : any;
+  fileTypeArr = [
+      {id:'Aadhar Card',Value:'aadhar'},
+      {id:'Pan Card',Value:'pan'},
+      {id:'Passport',Value:'passport'},
+      {id:'Bank Check',Value:'check'},
+      {id:'Driving Licence',Value:'drivingLicence'}
+    ];
 
   fileInfos: Observable<any>;
 
@@ -21,6 +30,11 @@ export class UploadImagesComponent implements OnInit {
   ngOnInit(): void {
     this.fileInfos = this.uploadService.getFiles();
   }
+
+  // getProperKeyName(fileT){
+    
+  // }
+
 
   selectFiles(event): void {
     this.progressInfos = [];
@@ -47,28 +61,36 @@ export class UploadImagesComponent implements OnInit {
   }
 
   upload(idx, file): void {
+    debugger;
     this.progressInfos[idx] = { value: 0, fileName: file.name };
 
     this.uploadService.upload(file).subscribe(
       event => {
+        
         if (event.type === HttpEventType.UploadProgress) {
+          debugger;
           this.progressInfos[idx].percentage = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
-          this.fileInfos = this.uploadService.getFiles();
+          debugger;
+          this.responseObj = event.body;
+          // this.fileInfos = this.uploadService.getFiles();
         }
       },
       err => {
         this.progressInfos[idx].percentage = 0;
-        this.message = 'Could not upload the file:' + file.name;
+        this.responseObj = err.error;
+        // this.message = 'Could not upload the file:' + file.name;
+        this.message = err.error && err.error.message ? err.error.message : 'Something Wrong.';
       });
   }
 
   uploadFiles(): void {
     this.message = '';
-
-    for (let i = 0; i < this.selectedFiles.length; i++) {
-      this.upload(i, this.selectedFiles[i]);
-    }
+    this.responseObj = null;
+    this.upload(0, this.selectedFiles);
+    // for (let i = 0; i < this.selectedFiles.length; i++) {
+    //   this.upload(i, this.selectedFiles[i]);
+    // }
   }
 
 }

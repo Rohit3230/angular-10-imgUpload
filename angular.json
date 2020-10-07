@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Angular10UploadMultipleImages"
+    }
+  },
+  "defaultProject": "Angular10UploadMultipleImages",
+  "cli": {
+    "analytics": "8569491d-89ea-4ef7-b2c0-e564d825f35a"
+  }
 }

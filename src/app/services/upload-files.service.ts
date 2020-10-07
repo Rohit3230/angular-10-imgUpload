@@ -7,16 +7,20 @@ import { Observable } from 'rxjs';
 })
 export class UploadFilesService {
 
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'http://localhost:3230';
 
   constructor(private http: HttpClient) { }
 
-  upload(file: File): Observable<HttpEvent<any>> {
+  upload(file: any): Observable<HttpEvent<any>> {
+    debugger;
     const formData: FormData = new FormData();
 
-    formData.append('file', file);
+    for(var i=0; i<= file.length-1;i++){
+      formData.append('image', file[i]);
+    }
+    
 
-    const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
+    const req = new HttpRequest('POST', `${this.baseUrl}/multiple/aadhar`, formData, {
       reportProgress: true,
       responseType: 'json'
     });

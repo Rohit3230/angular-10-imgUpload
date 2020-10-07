@@ -1,3 +1,4 @@
+
 <div *ngFor="let progressInfo of progressInfos" class="mb-2">
   <span>{{ progressInfo.fileName }}</span>
   <div class="progress">
@@ -14,6 +15,13 @@
   </div>
 </div>
 
+<div>
+  <label>Select File Type</label>&nbsp;
+  <select [(ngModel)]="selected" name="fileType" placeholder="select">
+    <option *ngFor="let sta of fileTypeArr" [ngValue]="sta.Value" >{{sta.id}}</option>
+</select>
+
+</div>
 <label class="btn btn-default">
   <input type="file" accept="image/*" multiple (change)="selectFiles($event)" />
 </label>
@@ -28,7 +36,7 @@
 
 <div class="alert alert-light" role="alert">{{ message }}</div>
 
-<div class="card">
+<!-- <div class="card">
   <div class="card-header">List of Images</div>
   <ul
     class="list-group list-group-flush"
@@ -37,6 +45,21 @@
     <li class="list-group-item">
       <p><a href="{{ file.url }}">{{ file.name }}</a></p>
       <img src="{{ file.url }}" alt="{{ file.name }}" height="80px">
+    </li>
+  </ul>
+</div> -->
+<div class="card" *ngIf="responseObj">
+  <div class="card-header">File Data</div>
+  <!-- responseObj-{{responseObj.result}}
+  <br>
+  {{responseObj.result.aadharNumber}} -->
+  <ul
+    class="list-group list-group-flush"
+    *ngFor="let item of responseObj.result | keyvalue"
+  >
+    <li class="list-group-item">
+      <span><b>{{ item.key }}:&nbsp;</b></span>
+      <span>{{ item.value }}</span>
     </li>
   </ul>
 </div>
