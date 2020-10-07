@@ -11,7 +11,7 @@ export class UploadFilesService {
 
   constructor(private http: HttpClient) { }
 
-  upload(file: any): Observable<HttpEvent<any>> {
+  upload(file: any, selectedFileType:string): Observable<HttpEvent<any>> {
     debugger;
     const formData: FormData = new FormData();
 
@@ -20,7 +20,7 @@ export class UploadFilesService {
     }
     
 
-    const req = new HttpRequest('POST', `${this.baseUrl}/multiple/aadhar`, formData, {
+    const req = new HttpRequest('POST', `${this.baseUrl}/multiple/`+selectedFileType, formData, {
       reportProgress: true,
       responseType: 'json'
     });

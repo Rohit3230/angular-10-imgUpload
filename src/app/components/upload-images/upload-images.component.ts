@@ -60,11 +60,11 @@ export class UploadImagesComponent implements OnInit {
     }
   }
 
-  upload(idx, file): void {
+  upload(idx, file, selected): void {
     debugger;
     this.progressInfos[idx] = { value: 0, fileName: file.name };
 
-    this.uploadService.upload(file).subscribe(
+    this.uploadService.upload(file, selected).subscribe(
       event => {
         
         if (event.type === HttpEventType.UploadProgress) {
@@ -87,7 +87,7 @@ export class UploadImagesComponent implements OnInit {
   uploadFiles(): void {
     this.message = '';
     this.responseObj = null;
-    this.upload(0, this.selectedFiles);
+    this.upload(0, this.selectedFiles, this.selected);
     // for (let i = 0; i < this.selectedFiles.length; i++) {
     //   this.upload(i, this.selectedFiles[i]);
     // }
