@@ -31,9 +31,21 @@ export class UploadImagesComponent implements OnInit {
     this.fileInfos = this.uploadService.getFiles();
   }
 
-  // getProperKeyName(fileT){
-    
-  // }
+  getProperKeyName(dataDype : string){
+      let dataTypeObj : any = {
+        aadharNumber: 'Aadhar Number',
+    gender: 'Gender',
+    dob: 'DOB',
+    name: 'Name',
+    address: 'Address',
+    fatherName: "Father's Name",
+    panNumber: 'Pan Number',
+    ifsc: 'IFSC Code',
+    accNum: 'Account Number',
+    bankName: 'Bank/Branch Name'
+      }
+      return dataTypeObj[dataDype] ? dataTypeObj[dataDype] : (dataDype).toUpperCase();
+  }
 
 
   selectFiles(event): void {

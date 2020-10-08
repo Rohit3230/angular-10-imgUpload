@@ -58,7 +58,7 @@
     *ngFor="let item of responseObj.result | keyvalue"
   >
     <li class="list-group-item">
-      <span><b>{{ item.key }}:&nbsp;</b></span>
+      <span><b>{{ getProperKeyName(item.key) }}:&nbsp;</b></span>
       <span>{{ item.value }}</span>
     </li>
   </ul>
