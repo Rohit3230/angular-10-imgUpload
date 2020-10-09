@@ -90,6 +90,7 @@ export class UploadImagesComponent implements OnInit {
       },
       err => {
         this.progressInfos[idx].percentage = 0;
+        debugger;
         this.responseObj = err.error;
         // this.message = 'Could not upload the file:' + file.name;
         this.message = err.error && err.error.message ? err.error.message : 'Something Wrong.';
