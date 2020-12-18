@@ -4,13 +4,8 @@
 https://rohit3230.github.io/angular-10-imgUpload/
 
 # Whats in this project
-IMG document data OCR Functionality for extract data from document.
-Code works for diffrent files:-
-Aadhar card
-Pan card
-Passport
-Bank Check
-Driving License
+IMG document upload Functionality with angular 10+ version.
+Send file data in api.
 
 ## Build
 
