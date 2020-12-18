@@ -1,5 +1,17 @@
 # Angular 10 upload multiple Images example
 
+# Demo Url
+https://rohit3230.github.io/angular-10-imgUpload/
+
+# Whats in this project
+IMG document data OCR Functionality for extract data from document.
+Code works for diffrent files:-
+Aadhar card
+Pan card
+Passport
+Bank Check
+Driving License
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
